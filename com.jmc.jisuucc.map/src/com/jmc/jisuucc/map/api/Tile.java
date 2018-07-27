@@ -13,4 +13,5 @@ public interface Tile {
 	public String description();
 	public boolean hasCollision();
 	public Texture texture();
+	public void setTexture(Texture texture);
 }

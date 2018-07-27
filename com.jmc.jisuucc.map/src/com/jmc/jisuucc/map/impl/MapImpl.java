@@ -10,6 +10,12 @@ public class MapImpl implements Map {
 	private int width;
 	private int height;
 	private Tile[][] tiles;
+	
+	public MapImpl(int width, int height, Tile[][] tiles) {
+		this.width = width;
+		this.height = height;
+		this.tiles = tiles;
+	}
 
 	@Override
 	public int width() {
@@ -33,6 +39,10 @@ public class MapImpl implements Map {
 		assert(x > 0 && x < tiles.length);
 		assert(y > 0 && y < tiles[0].length);
 		return tiles[x][y];
+	}
+	
+	public void render() {
+		System.out.println("Render map");
 	}
 
 }

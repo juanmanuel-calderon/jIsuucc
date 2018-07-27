@@ -14,11 +14,10 @@ public class TileImpl implements Tile {
 	private boolean hasCollision;
 	private Texture texture;
 	
-	TileImpl(int x, int y, String description, boolean hasCollision, Texture texture) {
+	TileImpl(int x, int y, String description, boolean hasCollision) {
 		this.id = x * MapImpl.TILE_COLUMNS + y;
 		this.description = description;
 		this.hasCollision = hasCollision;
-		this.texture = texture;
 	}
 
 	@Override
@@ -39,6 +38,11 @@ public class TileImpl implements Tile {
 	@Override
 	public Texture texture() {
 		return texture;
+	}
+	
+	@Override
+	public void setTexture(Texture texture) {
+		this.texture = texture;
 	}
 
 	@Override

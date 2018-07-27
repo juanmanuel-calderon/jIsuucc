@@ -1,6 +1,8 @@
 package com.jmc.jisuucc.map.api;
 
-public interface Map {
+import com.jmc.jisuucc.render.api.Renderable;
+
+public interface Map extends Renderable {
 	
 	public int width();
 	public int height();

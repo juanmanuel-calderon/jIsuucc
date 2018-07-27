@@ -1,6 +1,0 @@
-org.apache.felix.gogo.runtime;version='[1.0.10,1.0.11)';resolution=file:/C:/Users/jmcq2/.m2/repository/org/apache/felix/org.apache.felix.gogo.runtime/1.0.10/org.apache.felix.gogo.runtime-1.0.10.jar
-org.apache.felix.scr;version='[2.0.14,2.0.15)';resolution=file:/C:/Users/jmcq2/.m2/repository/org/apache/felix/org.apache.felix.scr/2.0.14/org.apache.felix.scr-2.0.14.jar
-com.jmc.jisuucc.map;version=snapshot;resolution=file:/C:/Users/jmcq2/eclipse-workspace/com.jmc.jisuucc.map/generated/com.jmc.jisuucc.map.jar
-org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)';resolution=file:/C:/Users/jmcq2/.m2/repository/org/apache/felix/org.apache.felix.gogo.shell/1.0.0/org.apache.felix.gogo.shell-1.0.0.jar
-com.jmc.jisuucc.thirdparty.tiled;version=snapshot;resolution=file:/C:/Users/jmcq2/eclipse-workspace/com.jmc.jisuucc.thirdparty.tiled/generated/com.jmc.jisuucc.thirdparty.tiled.jar
-org.apache.felix.gogo.command;version='[1.0.2,1.0.3)';resolution=file:/C:/Users/jmcq2/.m2/repository/org/apache/felix/org.apache.felix.gogo.command/1.0.2/org.apache.felix.gogo.command-1.0.2.jar

@@ -1,0 +1,36 @@
+-runfw: org.apache.felix.framework;version='[5.6.10,5.6.10]'
+-runee: JavaSE-1.8
+
+-runsystemcapabilities: ${native_capability}
+
+-resolve.effective: active;skip:="osgi.service"
+
+-runbundles: \
+	org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
+	org.apache.felix.gogo.runtime;version='[1.0.10,1.0.11)',\
+	org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)',\
+	com.jmc.jisuucc.core;version=snapshot,\
+	com.jmc.jisuucc.map.api;version=snapshot,\
+	com.jmc.jisuucc.render.api;version=snapshot,\
+	com.jmc.jisuucc.map.impl;version=snapshot,\
+	com.jmc.jisuucc.render.impl;version=snapshot,\
+	com.jmc.jisuucc.thirdparty.tiled;version=snapshot,\
+	org.apache.felix.configadmin;version='[1.8.16,1.8.17)',\
+	org.apache.felix.dependencymanager;version='[4.4.1,4.4.2)',\
+	org.apache.felix.metatype;version='[1.1.6,1.1.7)',\
+	org.apache.felix.dependencymanager.runtime;version='[4.0.5,4.0.6)',\
+	org.apache.felix.dependencymanager.shell;version='[4.0.6,4.0.7)'
+
+-runrequires: \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.core)',\
+	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.map.api)',\
+	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.map.impl)',\
+	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.render.api)',\
+	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.render.impl)',\
+	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.thirdparty.tiled)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.runtime)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.shell)'
+-runproperties: org.osgi.framework.bootdelegation=com.sun.*

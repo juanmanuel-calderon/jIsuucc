@@ -1,8 +1,10 @@
 package com.jmc.jisuucc.render.api;
 
+import java.awt.image.BufferedImage;
+
 public interface TextureCreator {
 	
 	public Texture fromFile(String filename);
-	public Texture fromTile(String filename, int x, int y);
+	public Texture fromImage(BufferedImage image);
 
 }
