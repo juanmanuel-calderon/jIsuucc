@@ -1,0 +1,8 @@
+Bundle-Version: 1.0.0
+
+Include-Resource: @lib/libtiled-1.0-SNAPSHOT.jar!/*
+
+Export-Package: org.mapeditor.core,\
+				org.mapeditor.io,\
+				org.mapeditor.util,\
+				org.mapeditor.view

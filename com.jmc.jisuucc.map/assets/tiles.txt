@@ -1,0 +1,4 @@
+//description, pos_x in tileset, pos_y in tileset, provokes collision?
+Floor,0,0,false
+Rock,1,0,true
+Void,0,1,true

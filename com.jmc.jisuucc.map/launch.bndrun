@@ -1,0 +1,20 @@
+-runfw: org.apache.felix.framework;version='[5.6.10,5.6.10]'
+-runee: JavaSE-1.8
+
+-runsystemcapabilities: ${native_capability}
+
+-resolve.effective: active;skip:="osgi.service"
+
+-runbundles: \
+	com.jmc.jisuucc.map;version=snapshot,\
+	com.jmc.jisuucc.thirdparty.tiled;version=snapshot,\
+	org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
+	org.apache.felix.gogo.runtime;version='[1.0.10,1.0.11)',\
+	org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)',\
+	org.apache.felix.scr;version='[2.0.14,2.0.15)'
+
+-runrequires:\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.map)'
+-runproperties: org.osgi.framework.bootdelegation=com.sun.*
