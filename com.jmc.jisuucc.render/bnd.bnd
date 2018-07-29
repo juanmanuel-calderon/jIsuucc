@@ -2,7 +2,8 @@
 	osgi.annotation;version=6.0.1,\
 	osgi.core;version=6.0,\
 	osgi.cmpn;version=6.0,\
-	org.apache.felix.dependencymanager.annotation
+	org.apache.felix.dependencymanager.annotation,\
+	com.jmc.jisuucc.thirdparty.jogl;version=latest
 
 -testpath: \
 	${junit}

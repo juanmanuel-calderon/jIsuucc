@@ -15,3 +15,4 @@
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
 	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.render)'
+-runproperties: org.osgi.framework.bootdelegation='sun.*, javax.*'

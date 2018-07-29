@@ -7,7 +7,7 @@ import com.jmc.jisuucc.render.api.Texture;
 
 public class TileImpl implements Tile {
 	
-	static String TILES_PNG = "assets" + File.separator + "tiles.png";
+	static String TILES_PNG = "assets" + File.separator + "map" + File.separator + "tiles.png";
 	
 	private int id;
 	private String description;
@@ -18,6 +18,7 @@ public class TileImpl implements Tile {
 		this.id = x * MapImpl.TILE_COLUMNS + y;
 		this.description = description;
 		this.hasCollision = hasCollision;
+		this.texture = null;
 	}
 
 	@Override
