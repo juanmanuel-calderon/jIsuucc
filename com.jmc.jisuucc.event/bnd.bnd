@@ -2,13 +2,14 @@
 	osgi.annotation;version=6.0.1,\
 	osgi.core;version=6.0,\
 	osgi.cmpn;version=6.0,\
-	org.apache.felix.dependencymanager.annotation,\
-	com.jmc.jisuucc.event.api;version=latest
+	org.apache.felix.dependencymanager.annotation
 
 -testpath: \
 	${junit}
 
 javac.source: 1.8
 javac.target: 1.8
+
+
 
 -sub: *.bnd

@@ -1,0 +1,22 @@
+package com.jmc.jisuucc.event.api;
+
+public enum GameEvent {
+	
+	MOVE_UP,
+	MOVE_DOWN,
+	MOVE_RIGHT,
+	MOVE_LEFT,
+	STOP_MOVE_UP,
+	STOP_MOVE_DOWN,
+	STOP_MOVE_RIGHT,
+	STOP_MOVE_LEFT,
+	FIRE_UP,
+	FIRE_DOWN,
+	FIRE_RIGHT,
+	FIRE_LEFT,
+	STOP_FIRE_UP,
+	STOP_FIRE_DOWN,
+	STOP_FIRE_RIGHT,
+	STOP_FIRE_LEFT;
+
+}

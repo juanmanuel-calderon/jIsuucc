@@ -22,7 +22,9 @@
 	org.apache.felix.dependencymanager.shell;version='[4.0.6,4.0.7)',\
 	com.jmc.jisuucc.entity.api;version=snapshot,\
 	com.jmc.jisuucc.entity.impl;version=snapshot,\
-	com.jmc.jisuucc.thirdparty.jogl;version=snapshot
+	com.jmc.jisuucc.thirdparty.jogl;version=snapshot,\
+	com.jmc.jisuucc.event.api;version=snapshot,\
+	com.jmc.jisuucc.event.impl;version=snapshot
 
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
@@ -38,5 +40,7 @@
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.dependencymanager.shell)',\
 	bnd.identity;version='latest';id='com.jmc.jisuucc.entity.api',\
 	bnd.identity;version='latest';id='com.jmc.jisuucc.entity.impl',\
-	bnd.identity;version='latest';id='com.jmc.jisuucc.thirdparty.jogl'
+	bnd.identity;version='latest';id='com.jmc.jisuucc.thirdparty.jogl',\
+	bnd.identity;id='com.jmc.jisuucc.event.api',\
+	bnd.identity;id='com.jmc.jisuucc.event.impl'
 -runproperties: org.osgi.framework.bootdelegation='sun.*, javax.*, com.sun.*'

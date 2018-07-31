@@ -1,7 +1,8 @@
 package com.jmc.jisuucc.render.impl;
 
+import java.awt.image.BufferedImage;
+
 import com.jmc.jisuucc.render.api.Texture;
-import com.jogamp.opengl.util.texture.TextureData;
 
 public class TextureImpl implements Texture {
 	
@@ -10,9 +11,9 @@ public class TextureImpl implements Texture {
 	public int id;
 	private int width;
 	private int height;
-	private TextureData texture;
+	private BufferedImage texture;
 	
-	TextureImpl(TextureData texture) {
+	TextureImpl(BufferedImage texture) {
 		this.id = id_gen++;
 		this.texture = texture;
 		this.width = texture.getWidth();
@@ -35,7 +36,7 @@ public class TextureImpl implements Texture {
 	}
 	
 	@Override
-	public TextureData texture() {
+	public BufferedImage texture() {
 		return texture;
 	}
 
