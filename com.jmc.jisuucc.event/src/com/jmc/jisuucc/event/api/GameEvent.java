@@ -1,7 +1,6 @@
 package com.jmc.jisuucc.event.api;
 
 public enum GameEvent {
-	
 	MOVE_UP,
 	MOVE_DOWN,
 	MOVE_RIGHT,
@@ -18,5 +17,4 @@ public enum GameEvent {
 	STOP_FIRE_DOWN,
 	STOP_FIRE_RIGHT,
 	STOP_FIRE_LEFT;
-
 }

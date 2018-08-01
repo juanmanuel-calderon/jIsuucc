@@ -4,10 +4,8 @@ Bundle-Version: 1.0.0
 	osgi.core;version=6.0,\
 	osgi.cmpn;version=6.0,\
 	org.apache.felix.dependencymanager.annotation;version=4.2,\
-	com.jmc.jisuucc.map.api;version=latest,\
 	com.jmc.jisuucc.render.api;version=latest,\
-	com.jmc.jisuucc.entity.api;version=latest,\
-	com.jmc.jisuucc.event.api;version=latest
+	com.jmc.jisuucc.gamestate.api;version=latest
 
 -testpath: \
 	${junit}

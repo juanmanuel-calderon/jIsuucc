@@ -1,5 +1,6 @@
 package com.jmc.jisuucc.render.impl;
 
+import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -19,18 +20,18 @@ import com.jmc.jisuucc.render.api.Texture;
 
 @Component
 public class RendererImpl implements Renderer {
-	
+
 	@ServiceDependency
 	private EventQueue eventListener;
-	
+
 	private Queue<DrawingElement> drawingQueue = new ConcurrentLinkedQueue<>();
-	private JFrame window;
-	
+	private Canvas gameScreen;
+
 	private class DrawingElement {
 		final Texture tex;
 		final int x;
 		final int y;
-		
+
 		DrawingElement(Texture tex, int x, int y) {
 			this.tex = tex;
 			this.x = x;
@@ -42,59 +43,58 @@ public class RendererImpl implements Renderer {
 			return "DrawingElement [tex=" + tex.id() + ", x=" + x + ", y=" + y + "]";
 		}		
 	}
-	
+
 	@Start
 	public void start() {
-		window = new Window();
-   	}
-	
+		new Window();
+		gameScreen.createBufferStrategy(2);
+	}
+
 	private class Window extends JFrame {
 		private static final long serialVersionUID = -2759363744832257790L;
-		private final int WIDTH = 1024;
-		private final int HEIGHT = 768;
-		
+		private static final int WIDTH = 1024;
+		private static final int HEIGHT = 768;
+
 		Window() {
 			init();
 		}
-		
+
 		private void init() {
 			setTitle("Map Test");
-			
-			GameScreen gs = new GameScreen();
+
+			gameScreen = new Canvas();
 			addKeyListener(eventListener);
-			add(gs);
+			add(gameScreen);
 			setSize(WIDTH, HEIGHT);
 			setLocationRelativeTo(null);
-			setUndecorated(true);
+			//setUndecorated(true);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setVisible(true);
 		}
 	}
-	
-	private class GameScreen extends JPanel {
-		private static final long serialVersionUID = -1869043931114880967L;
 
-		@Override
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			removeAll();
-			Graphics2D g2d = (Graphics2D) g;
-			
-			DrawingElement[] des = drawingQueue.toArray(new DrawingElement[0]);
-			for(DrawingElement de : des) {
-				BufferedImage bi = (BufferedImage) de.tex.texture();
-				g2d.drawImage(bi, de.x, de.y, bi.getWidth(), bi.getHeight(), null);
-			}
-		}
-	}
-	
 	@Override
 	public void drawImage(Texture texture, int x, int y) {
 		drawingQueue.add(new DrawingElement(texture, x, y));
 	}
-	
+
 	@Override
 	public void drawScreen() {
-		window.repaint();
+		Graphics2D g2d = null;
+		try {
+			g2d = (Graphics2D) gameScreen.getBufferStrategy().getDrawGraphics();
+			DrawingElement[] des = drawingQueue.toArray(new DrawingElement[0]);
+			if(des.length == 0) return;
+			for(DrawingElement de : des) {
+				BufferedImage bi = (BufferedImage) de.tex.texture();
+				g2d.drawImage(bi, de.x, de.y, bi.getWidth(), bi.getHeight(), null);
+			}
+			drawingQueue.clear();
+		} finally {
+			if (g2d != null) {
+				g2d.dispose();
+			}
+		}
+		gameScreen.getBufferStrategy().show();
 	}
 }

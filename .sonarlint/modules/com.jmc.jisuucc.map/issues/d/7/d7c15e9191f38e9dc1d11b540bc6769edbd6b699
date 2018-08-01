@@ -1,6 +1,12 @@
 
-ƒsquid:S3008"WRename this field "TILE_COLUMNS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÃĞ‰HvRMINORZ
+„squid:S3008 "WRename this field "TILE_COLUMNS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÃĞ‰H…RMINORZ
 CODE_SMELL
-q
-squid:S106-"9Replace this use of System.out or System.err by a logger.(”ğ×ÿúÿÿÿÿ8˜ü„âÍ,H„RMAJORZ
+xsquid:HiddenFieldCheck5"9Rename "width" which hides the field declared at line 35.(Òı´‘8ŞÏéÏ,H†RMAJORZ
+CODE_SMELL
+~squid:HiddenFieldCheck6":Rename "height" which hides the field declared at line 36.(–¯ƒÓüÿÿÿÿ8ŞÏéÏ,H‡RMAJORZ
+CODE_SMELL
+}squid:HiddenFieldCheck9"9Rename "tiles" which hides the field declared at line 37.(×ƒËúÿÿÿÿ8ŞÏéÏ,HˆRMAJORZ
+CODE_SMELL
+dsquid:S3655>"7Call "Optional#isPresent()" before accessing the value.(ŸãÒÙ8ŞÏéÏ,H‰RMAJORZBUG
+squid:S1858/"K"filename" is already a string, there's no need to call "toString()" on it.(ö¾¥‚8ŞÏéÏ,HŠRMINORZ
 CODE_SMELL

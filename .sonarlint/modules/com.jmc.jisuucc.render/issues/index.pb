@@ -17,3 +17,5 @@ g
 impl.bnd,0/c/0c579c8f208b4145171548a4a88bd5af383fa433
 ^
 .src/com/jmc/jisuucc/render/api/Renderable.java,1/e/1e1db88e4f42af6930280e7f7e45a092d6b7e8b2
+a
+1src/com/jmc/jisuucc/render/impl/RendererImpl.java,8/0/80f8b7efb9a8d73c6eb18c0d1798bbbbe4d6dd2d

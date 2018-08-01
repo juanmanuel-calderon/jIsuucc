@@ -1,8 +1,5 @@
 
-q
-squid:S106"9Replace this use of System.out or System.err by a logger.(Û²«úûÿÿÿÿ8è‹ÒåÍ,HÀRMAJORZ
+‡squid:S3008"NRename this field "FPS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹é®ûùÿÿÿÿ8šœ¼Ï,HìRMINORZ
 CODE_SMELL
-q
-squid:S106"9Replace this use of System.out or System.err by a logger.(Û²«úûÿÿÿÿ8Š¸ÔåÍ,HÁRMAJORZ
+^squid:S00108")Either remove or fill this block of code.(‚Üò8ú½‘†Ï,HßRMAJORZ
 CODE_SMELL
-Vsquid:S2189""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8éºµåÍ,H¯RBLOCKERZBUG

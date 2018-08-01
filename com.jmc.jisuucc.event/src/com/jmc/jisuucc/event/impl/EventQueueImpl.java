@@ -24,12 +24,11 @@ public class EventQueueImpl implements EventQueue {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println(e);
 		switch(e.getKeyCode()) {
-		case KeyEvent.VK_W: eventQueue.add(GameEvent.MOVE_UP); break;
+		case KeyEvent.VK_Z: eventQueue.add(GameEvent.MOVE_UP); break;
 		case KeyEvent.VK_S: eventQueue.add(GameEvent.MOVE_DOWN); break;
 		case KeyEvent.VK_D: eventQueue.add(GameEvent.MOVE_RIGHT); break;
-		case KeyEvent.VK_A: eventQueue.add(GameEvent.MOVE_LEFT); break;
+		case KeyEvent.VK_Q: eventQueue.add(GameEvent.MOVE_LEFT); break;
 		case KeyEvent.VK_UP: eventQueue.add(GameEvent.FIRE_UP); break;
 		case KeyEvent.VK_DOWN: eventQueue.add(GameEvent.FIRE_DOWN); break;
 		case KeyEvent.VK_RIGHT: eventQueue.add(GameEvent.FIRE_RIGHT); break;
@@ -41,10 +40,10 @@ public class EventQueueImpl implements EventQueue {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		switch(e.getKeyCode()) {
-		case KeyEvent.VK_W: eventQueue.add(GameEvent.STOP_MOVE_UP); break;
+		case KeyEvent.VK_Z: eventQueue.add(GameEvent.STOP_MOVE_UP); break;
 		case KeyEvent.VK_S: eventQueue.add(GameEvent.STOP_MOVE_DOWN); break;
 		case KeyEvent.VK_D: eventQueue.add(GameEvent.STOP_MOVE_RIGHT); break;
-		case KeyEvent.VK_A: eventQueue.add(GameEvent.STOP_MOVE_LEFT); break;
+		case KeyEvent.VK_Q: eventQueue.add(GameEvent.STOP_MOVE_LEFT); break;
 		case KeyEvent.VK_UP: eventQueue.add(GameEvent.STOP_FIRE_UP); break;
 		case KeyEvent.VK_DOWN: eventQueue.add(GameEvent.STOP_FIRE_DOWN); break;
 		case KeyEvent.VK_RIGHT: eventQueue.add(GameEvent.STOP_FIRE_RIGHT); break;

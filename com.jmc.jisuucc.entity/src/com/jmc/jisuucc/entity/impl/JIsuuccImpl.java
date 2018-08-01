@@ -86,14 +86,20 @@ public class JIsuuccImpl implements JIsuucc {
 
 	@Override
 	public void move(Direction direction) {
-		// TODO Auto-generated method stub
-		
+		switch(direction) {
+			case UP: position = new Point(position.x, position.y - (int) speed); break;
+			case DOWN: position = new Point(position.x, position.y + (int) speed); break;
+			case LEFT: position = new Point(position.x - (int) speed, position.y); break;
+			case RIGHT: position = new Point(position.x + (int) speed, position.y); break;
+		}
 	}
 
 	@Override
 	public void moveTo(int x, int y) {
-		// TODO Auto-generated method stub
-		
+		if(x < position.x) move(Direction.LEFT);
+		if(x > position.x) move(Direction.RIGHT);
+		if(y < position.y) move(Direction.UP);
+		if(y > position.y) move(Direction.DOWN);
 	}
 
 }
