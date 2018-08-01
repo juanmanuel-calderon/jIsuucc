@@ -25,7 +25,9 @@
 	com.jmc.jisuucc.gamestate.api;version=snapshot,\
 	com.jmc.jisuucc.gamestate.impl;version=snapshot,\
 	com.jmc.jisuucc.entity.impl;version=snapshot,\
-	com.jmc.jisuucc.event.impl;version=snapshot
+	com.jmc.jisuucc.event.impl;version=snapshot,\
+	com.jmc.jisuucc.collision.api;version=snapshot,\
+	com.jmc.jisuucc.collision.impl;version=snapshot
 
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
@@ -44,5 +46,7 @@
 	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.entity.api)',\
 	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.entity.impl)',\
 	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.event.api)',\
-	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.event.impl)'
+	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.event.impl)',\
+	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.collision.api)',\
+	osgi.identity;filter:='(osgi.identity=com.jmc.jisuucc.collision.impl)'
 -runproperties: org.osgi.framework.bootdelegation='sun.*, javax.*, com.sun.*'

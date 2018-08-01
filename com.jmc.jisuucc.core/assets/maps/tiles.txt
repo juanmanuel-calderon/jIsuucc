@@ -1,4 +1,4 @@
-//description, pos_x, pos_y, collision
+//x, y, description, collision
 0,0,Floor,false
-1,0,Rock,true
-0,1,Void,true
+0,1,Rock,true
+1,0,Void,true

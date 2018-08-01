@@ -14,7 +14,7 @@ public class Game {
 	@ServiceDependency
 	private GameState state;
 	
-	private static int FPS = 1000 / 30;
+	private static final int FPS = 1000 / 30;
 	
 	@Start
 	public void start() {
@@ -32,4 +32,6 @@ public class Game {
 			}
 		}).start();
 	}
+	
+	
 }

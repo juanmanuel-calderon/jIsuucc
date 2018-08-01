@@ -6,6 +6,7 @@ import org.apache.felix.dm.annotation.api.Component;
 import org.apache.felix.dm.annotation.api.ServiceDependency;
 import org.apache.felix.dm.annotation.api.Start;
 
+import com.jmc.jisuucc.collision.api.CollisionChecker;
 import com.jmc.jisuucc.entity.api.JIsuucc;
 import com.jmc.jisuucc.entity.api.Mobile.Direction;
 import com.jmc.jisuucc.event.api.EventQueue;
@@ -30,6 +31,9 @@ public class GameStateImpl implements GameState {
 	@ServiceDependency
 	private Renderer renderer;
 	
+	@ServiceDependency
+	private CollisionChecker collisionChecker;
+	
 	private boolean[] moveEvents = new boolean[Direction.values().length];
 
 	@Start
@@ -52,6 +56,7 @@ public class GameStateImpl implements GameState {
 	
 	private void consume(GameEvent event) {
 		if(event == null) return;
+		System.out.println(event);
 		switch(event) {
 		case MOVE_UP: moveEvents[0] = true; break;
 		case MOVE_DOWN: moveEvents[1] = true; break;
@@ -71,6 +76,16 @@ public class GameStateImpl implements GameState {
 		if(moveEvents[1]) isuucc.move(Direction.DOWN);
 		if(moveEvents[2]) isuucc.move(Direction.RIGHT);
 		if(moveEvents[3]) isuucc.move(Direction.LEFT);
+		while(checkCollisions());
+	}
+	
+	private boolean checkCollisions() {
+		boolean collision = false;
+		if(moveEvents[0]) collision = (collision || collisionChecker.checkCollisionMap(isuucc, map, Direction.UP));
+		if(moveEvents[1]) collision = (collision || collisionChecker.checkCollisionMap(isuucc, map, Direction.DOWN));
+		if(moveEvents[2]) collision = (collision || collisionChecker.checkCollisionMap(isuucc, map, Direction.RIGHT));
+		if(moveEvents[3]) collision = (collision || collisionChecker.checkCollisionMap(isuucc, map, Direction.LEFT));
+		return collision;
 	}
 
 }

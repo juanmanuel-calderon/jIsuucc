@@ -48,7 +48,7 @@ public class TileImpl implements Tile {
 
 	@Override
 	public String toString() {
-		return "Tile [description=" + description + "]";
+		return "TileImpl [id=" + id + ", description=" + description + ", hasCollision=" + hasCollision + "]";
 	}
-	
+
 }

@@ -93,8 +93,6 @@ public class MapImpl implements Map {
 	public Tile tileAtCoord(int x, int y) {
 		x = x / Tile.TILE_SIZE;
 		y = y / Tile.TILE_SIZE;
-		assert(x > 0 && x < tiles.length);
-		assert(y > 0 && y < tiles[0].length);
 		return tiles[x][y];
 	}
 	
