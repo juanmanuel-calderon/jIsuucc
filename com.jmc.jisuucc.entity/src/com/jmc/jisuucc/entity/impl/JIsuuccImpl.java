@@ -1,13 +1,18 @@
 package com.jmc.jisuucc.entity.impl;
 
+import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.Dictionary;
 
 import org.apache.felix.dm.annotation.api.FactoryConfigurationAdapterService;
 import org.apache.felix.dm.annotation.api.ServiceDependency;
 import org.apache.felix.dm.annotation.api.Start;
 
+import com.jmc.jisuucc.event.api.CollisionEvent;
+import com.jmc.jisuucc.event.api.Direction;
 import com.jmc.jisuucc.entity.api.JIsuucc;
+import com.jmc.jisuucc.map.api.Tile;
 import com.jmc.jisuucc.render.api.Renderer;
 import com.jmc.jisuucc.render.api.Texture;
 import com.jmc.jisuucc.render.api.TextureCreator;
@@ -100,6 +105,25 @@ public class JIsuuccImpl implements JIsuucc {
 		if(x > position.x) move(Direction.RIGHT);
 		if(y < position.y) move(Direction.UP);
 		if(y > position.y) move(Direction.DOWN);
+	}
+
+	@Override
+	public void onCollision(CollisionEvent event) {
+		switch(event.what) {
+		case MAP: onCollision(event.box, event.direction); break;
+		case ENEMY: break;
+		case ISUUCC: break;
+		}
+	}
+	
+	private void onCollision(Rectangle tileBox, Direction dir) {
+		Dimension entityDimensions = new Dimension(texture().width() / 2, texture().height() / 2);
+		switch(dir) {
+		case UP: setPosition(new Point(position.x, tileBox.y + Tile.TILE_SIZE + entityDimensions.height)); break;
+		case DOWN: setPosition(new Point(position.x, tileBox.y - entityDimensions.height)); break;
+		case RIGHT: setPosition(new Point(tileBox.x - entityDimensions.width, position.y)); break;
+		case LEFT: setPosition(new Point(tileBox.x + Tile.TILE_SIZE + entityDimensions.width, position.y)); break;
+		}
 	}
 
 }

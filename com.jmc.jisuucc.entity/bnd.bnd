@@ -3,7 +3,9 @@
 	osgi.core;version=6.0,\
 	osgi.cmpn;version=6.0,\
 	com.jmc.jisuucc.render.api;version=latest,\
-	org.apache.felix.dependencymanager.annotation
+	org.apache.felix.dependencymanager.annotation,\
+	com.jmc.jisuucc.map.api;version=latest,\
+	com.jmc.jisuucc.event.api;version=latest
 
 -testpath: \
 	${junit}

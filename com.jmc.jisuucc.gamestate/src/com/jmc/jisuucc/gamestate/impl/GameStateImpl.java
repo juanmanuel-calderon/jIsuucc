@@ -8,7 +8,7 @@ import org.apache.felix.dm.annotation.api.Start;
 
 import com.jmc.jisuucc.collision.api.CollisionChecker;
 import com.jmc.jisuucc.entity.api.JIsuucc;
-import com.jmc.jisuucc.entity.api.Mobile.Direction;
+import com.jmc.jisuucc.event.api.Direction;
 import com.jmc.jisuucc.event.api.EventQueue;
 import com.jmc.jisuucc.event.api.GameEvent;
 import com.jmc.jisuucc.gamestate.api.GameState;
@@ -81,10 +81,10 @@ public class GameStateImpl implements GameState {
 	
 	private boolean checkCollisions() {
 		boolean collision = false;
-		if(moveEvents[0]) collision = (collision || collisionChecker.checkCollisionMap(isuucc, map, Direction.UP));
-		if(moveEvents[1]) collision = (collision || collisionChecker.checkCollisionMap(isuucc, map, Direction.DOWN));
-		if(moveEvents[2]) collision = (collision || collisionChecker.checkCollisionMap(isuucc, map, Direction.RIGHT));
-		if(moveEvents[3]) collision = (collision || collisionChecker.checkCollisionMap(isuucc, map, Direction.LEFT));
+		if(moveEvents[0]) collision = (collision || collisionChecker.checkCollision(isuucc, map, Direction.UP));
+		if(moveEvents[1]) collision = (collision || collisionChecker.checkCollision(isuucc, map, Direction.DOWN));
+		if(moveEvents[2]) collision = (collision || collisionChecker.checkCollision(isuucc, map, Direction.RIGHT));
+		if(moveEvents[3]) collision = (collision || collisionChecker.checkCollision(isuucc, map, Direction.LEFT));
 		return collision;
 	}
 
