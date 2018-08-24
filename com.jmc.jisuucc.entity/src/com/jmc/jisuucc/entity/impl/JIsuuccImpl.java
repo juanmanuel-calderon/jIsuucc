@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Dictionary;
+import java.util.Optional;
 
 import org.apache.felix.dm.annotation.api.FactoryConfigurationAdapterService;
 import org.apache.felix.dm.annotation.api.ServiceDependency;
@@ -12,6 +13,7 @@ import org.apache.felix.dm.annotation.api.Start;
 import com.jmc.jisuucc.event.api.CollisionEvent;
 import com.jmc.jisuucc.event.api.Direction;
 import com.jmc.jisuucc.entity.api.JIsuucc;
+import com.jmc.jisuucc.entity.api.Tear;
 import com.jmc.jisuucc.map.api.Tile;
 import com.jmc.jisuucc.render.api.Renderer;
 import com.jmc.jisuucc.render.api.Texture;
@@ -26,13 +28,22 @@ public class JIsuuccImpl implements JIsuucc {
 	@ServiceDependency
 	private TextureCreator textureCreator;
 	
+	@ServiceDependency
+	private TearFactory tearFactory;
+	
 	private int hp;
 	private double dmg;
 	private double speed;
 	private double tears;
+	private int range;
+	private double tearSpeed;
 	private Point position = new Point(0, 0);
+	private boolean alive = true;
 	private String textureFilename;
 	private Texture texture;
+	
+	private long lastFired = 0;
+	private long delay = 0;
 	
 	public void updated(Dictionary<String, Object> conf) {
 		this.hp = Integer.parseInt(conf.get("hp").toString());
@@ -40,10 +51,14 @@ public class JIsuuccImpl implements JIsuucc {
 		this.speed = Double.parseDouble(conf.get("speed").toString());
 		this.tears = Double.parseDouble(conf.get("tears").toString());
 		this.textureFilename = conf.get("texture").toString();
+		this.range = Integer.parseInt(conf.get("range").toString());
+		this.tearSpeed = Double.parseDouble(conf.get("tearSpeed").toString());
+		this.delay = (long) (1000 * tears);
 	}
 	
 	@Start
 	public void start() {
+		System.out.println("JIsuucc started");
 		this.texture = textureCreator.fromFile(textureFilename).get();
 	}
 	
@@ -68,6 +83,16 @@ public class JIsuuccImpl implements JIsuucc {
 	}
 	
 	@Override
+	public int range() {
+		return this.range;
+	}
+	
+	@Override
+	public double tearSpeed() {
+		return this.tearSpeed;
+	}
+	
+	@Override
 	public Point position() {
 		return this.position;
 	}
@@ -80,6 +105,16 @@ public class JIsuuccImpl implements JIsuucc {
 	@Override
 	public Texture texture() {
 		return this.texture;
+	}
+	
+	@Override 
+	public boolean isAlive() {
+		return alive;
+	}
+	
+	@Override
+	public void kill() {
+		alive = false;
 	}
 
 	@Override
@@ -98,13 +133,13 @@ public class JIsuuccImpl implements JIsuucc {
 			case RIGHT: position = new Point(position.x + (int) speed, position.y); break;
 		}
 	}
-
+	
 	@Override
-	public void moveTo(int x, int y) {
-		if(x < position.x) move(Direction.LEFT);
-		if(x > position.x) move(Direction.RIGHT);
-		if(y < position.y) move(Direction.UP);
-		if(y > position.y) move(Direction.DOWN);
+	public void moveTo(Point p) {
+		if(p.x < position.x) move(Direction.LEFT);
+		if(p.x > position.x) move(Direction.RIGHT);
+		if(p.y < position.y) move(Direction.UP);
+		if(p.y > position.y) move(Direction.DOWN);
 	}
 
 	@Override
@@ -124,6 +159,27 @@ public class JIsuuccImpl implements JIsuucc {
 		case RIGHT: setPosition(new Point(tileBox.x - entityDimensions.width, position.y)); break;
 		case LEFT: setPosition(new Point(tileBox.x + Tile.TILE_SIZE + entityDimensions.width, position.y)); break;
 		}
+	}
+
+	@Override
+	public Optional<Tear> attack(Direction direction) {
+		long current = System.currentTimeMillis();
+		if(current - lastFired > delay) {
+			lastFired = current;
+			return Optional.of(tearFactory.newTear(position, dmg, tearSpeed, direction, range));
+		} else {
+			return Optional.empty();
+		}
+	}
+
+	@Override
+	public Optional<Tear> attack(Point p) {
+		if(p.x < position.x) return attack(Direction.LEFT);
+		if(p.x > position.x) return attack(Direction.RIGHT);
+		if(p.y < position.y) return attack(Direction.UP);
+		if(p.y > position.y) return attack(Direction.DOWN);
+		
+		return Optional.empty();
 	}
 
 }

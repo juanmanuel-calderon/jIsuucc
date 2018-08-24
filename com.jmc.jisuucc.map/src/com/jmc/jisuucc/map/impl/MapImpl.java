@@ -44,6 +44,7 @@ public class MapImpl implements Map {
 	
 	@Start
 	public void start() throws Exception {
+		System.out.println("Map started");
 		parse(this.filename.toString().replaceAll("/", Matcher.quoteReplacement(File.separator)));
 	}
 	

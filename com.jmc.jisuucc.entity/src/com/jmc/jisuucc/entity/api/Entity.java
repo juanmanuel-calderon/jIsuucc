@@ -9,4 +9,6 @@ public interface Entity extends Renderable {
 	public Point position();
 	public Texture texture();
 	public void setPosition(Point position);
+	public void kill();
+	public boolean isAlive();
 }

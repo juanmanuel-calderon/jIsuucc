@@ -46,7 +46,7 @@ public class CollisionCheckerImpl implements CollisionChecker {
 			Rectangle tileBox = new Rectangle(i, tilePoint.y, 
 			   						  i + Tile.TILE_SIZE, tilePoint.y + Tile.TILE_SIZE);
 			Tile tile = map.tileAtCoord(i, tilePoint.y);
-			if(tile.hasCollision() && collisionBox.intersects(tileBox)){  
+			if(tile.hasCollision() && collisionBox.intersects(tileBox)) {  
 				CollisionEvent event = new CollisionEvent(CollisionEntity.MAP, tile, tileBox, dir);
 				((Mobile) entity).onCollision(event);
 				return true;
@@ -69,7 +69,7 @@ public class CollisionCheckerImpl implements CollisionChecker {
 				((Mobile) entity).onCollision(event);
 				return true;
 			}
-				i += Tile.TILE_SIZE;
+			i += Tile.TILE_SIZE;
 		}
 		return false;
 	}

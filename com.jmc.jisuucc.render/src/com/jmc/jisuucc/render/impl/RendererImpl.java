@@ -7,6 +7,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 import org.apache.felix.dm.annotation.api.Component;
 import org.apache.felix.dm.annotation.api.ServiceDependency;
@@ -44,8 +45,7 @@ public class RendererImpl implements Renderer {
 
 	@Start
 	public void start() {
-		new Window();
-		gameScreen.createBufferStrategy(2);
+		SwingUtilities.invokeLater(Window::new);
 	}
 
 	private class Window extends JFrame {
@@ -55,6 +55,7 @@ public class RendererImpl implements Renderer {
 
 		Window() {
 			init();
+			gameScreen.createBufferStrategy(2);
 		}
 
 		private void init() {

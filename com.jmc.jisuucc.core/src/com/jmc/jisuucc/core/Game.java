@@ -18,6 +18,7 @@ public class Game {
 	
 	@Start
 	public void start() {
+		System.out.println("Game start");
 		state.render();
 		new Thread(() -> {
 			long start = System.currentTimeMillis();
